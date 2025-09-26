@@ -15,6 +15,11 @@ provider "kubernetes" {
   
 }
 
+# Split YAMLs into separate files
+resource "kubernetes_manifest" "my_app" {
+  manifest = yamldecode(file("${path.module}/k8s/deployment.yaml"))
+}
+
 # Apply your service.yaml
 resource "kubernetes_manifest" "my_service" {
   manifest = yamldecode(file("${path.module}/k8s/service.yaml"))
