@@ -35,12 +35,4 @@ jobs:
       - name: Apply Terraform plan
         run: terraform apply -auto-approve
 
-         # Update kubeconfig for EKS
-      - name: Update kubeconfig
-        run: |
-         aws eks update-kubeconfig --name my-eks-cluster 
-
-    # Deploy existing ECR image to EKS
-      - name: Deploy to EKS
-        run: |
-         kubectl apply -f eks/deployment.yaml
+    
