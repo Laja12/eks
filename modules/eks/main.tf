@@ -8,9 +8,9 @@ resource "aws_eks_cluster" "this" {
   }
 }
 
-resource "aws_eks_node_group" "default" {
+resource "aws_eks_node_group" "ec2" {
   cluster_name    = aws_eks_cluster.this.name
-  node_group_name = "default"
+  node_group_name = "ec2"
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.subnet_ids
 
