@@ -16,11 +16,11 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 }
 
-# NAT Gateway
 resource "aws_eip" "nat" {
-  count = length(var.public_subnets)
-  vpc   = true
+  count      = length(var.public_subnets)
+  domain     = "vpc"
 }
+
 
 resource "aws_nat_gateway" "nat" {
   count         = length(var.public_subnets)
